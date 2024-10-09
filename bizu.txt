@@ -1,0 +1,119 @@
+Instalação do Git
+
+
+Comando Git::
+
+------------------------
+iniciar o versionamento
+
+git init
+
+
+Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+    
+
+---------------
+ver o status de arquivos versionados
+
+git status
+
+
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   bin/Activate.ps1
+        new file:   bin/activate
+
+
+
+------------------------
+adicionar arquivos ao versionamento
+
+git add <nome_do_arquivo>  - arquivo específico
+
+git add . - todos os arquivos 
+
+
+
+efetuar o commit 
+
+git commit -a -m "Mensagem de identificação do commit"
+
+
+configurar identificação do usuário
+
+git config --global user.email "pablorgoncalves@gmail.com"
+git config --global user.name "Pablo Rocha Gonçalves"
+
+
+
+---------------
+criar chave ssh
+
+ssh-keygen -t ed25519 -C "pablorgoncalves@gmail.com"
+SENHA: nnk@DEV80
+
+
+Your identification has been saved in /home/development/.ssh/id_ed25519
+Your public key has been saved in /home/development/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:TtT20LGPdRUCv5WpeRSRNddY21S6mKLKOTHFXRgpGsM pablorgoncalves@gmail.com
+The key's randomart image is:
++--[ED25519 256]--+
+|     .    .=o. B#|
+|      E ..o.ooo+@|
+|       =.o+.o.o*o|
+|      ..o..o **o |
+|       .S . =+o. |
+|      oo . .  .  |
+|       oo        |
+|     ..o         |
+|      +.         |
++----[SHA256]-----+
+
+
+---------------------
+iniciar o ssh-agent em background
+
+eval "$(ssh-agent -s)"
+
+
+Agent pid 28166
+
+---------------------------
+adiciona a chave ao ssh-agent
+
+ssh-add ~/.ssh/id_ed25519
+
+
+Enter passphrase for /home/development/.ssh/id_ed25519:
+Identity added: /home/development/.ssh/id_ed25519 (pablorgoncalves@gmail.com)
+
+
+---------------------
+disponibilizar no Github
+
+--- HTTPS git remote add origin https://github.com/pablorgoncalves/2024_web_project.git ---
+
+git remote add origin git@github.com:pablorgoncalves/2024_web_project.git
+git branch -M main
+git push -u origin main
+
+
+
+---------------------
+gitignore
+
+git config --global core.excludesfile ~/.gitignore_global
